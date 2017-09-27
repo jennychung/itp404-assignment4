@@ -1,0 +1,122 @@
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: auto;
+        width: 50%;
+        margin-top: 5%;
+        text-align: center;
+        background: linear-gradient(to right, #A8BFFF 0%, #884D80 96%);
+        color: white;
+    }
+    
+    h1 {
+        font-size: 40pt;
+    }
+    
+    .searchterm{
+        font-size: 14pt;
+    }
+    
+    .date{
+        font-size: 10pt;
+        color: white;
+        line-height: 0%;
+    }
+    
+    #searchHistory{
+        font-size:20pt;
+    }
+    
+    #isearched{
+        font-size: 20pt;
+    }
+
+</style>
+
+<html>
+
+<head>
+    <title> Github Repo Search </title>
+    <!--    <link rel="stylesheet" href="main.css">-->
+
+</head>
+
+<body>
+    <img src="https://s3-us-west-2.amazonaws.com/fortlauderdaletech.org/portfolio/icon-github.png" style="width:130px; margin-bottom:-50px;">
+    
+    <div id="heading">
+        <h1> Github </h1>
+    </div>
+    <div id="subhead">
+        <h2> search for a user</h2>
+    </div>
+
+    <!--SEARCH FORM -->
+    <form id="thesearchbar">
+        <input type="text" id="usersearch">
+        <button type="button" id="search"> Search </button>
+    </form>
+
+
+
+    <!--OUTPUT RESULTS -->
+    <br>
+    <div id="isearched"> </div>
+    <div id="github-content"> </div>
+<br>
+
+    <template id="github-template" type="text/x-handlebars-template">
+        {{#each github_content}}
+    <div class="github">
+        
+      <p id="title"> 
+          
+         
+          <a href= "https://github.com/{{full_name}}"> {{name}} </a>
+          
+</p>
+        </div>
+    {{/each}}
+    </template>
+
+
+    <!--SAVE SEARCH HISTORY -->
+
+    <div id="searchHistory"> <br> SEARCH HISTORY </div> 
+
+    <div id="repos" class="repos"> </div>
+
+
+    <template id="repo-template">
+            <div class="repo">
+                  <p class="searchterm"> searched <em> {{term}}</em> </p>
+            <p class="date"> on {{createdAt}}</p>
+          
+                </div>
+        </template>
+
+    <template id="repos-template">
+        {{#each repos}}
+            <div class="repo">
+                   <p class="searchterm"> searched  <em> {{term}} </em></p>
+            <p class="date"> on {{createdAt}}</p> 
+                <br>
+         
+                </div>
+        {{/each}}
+        </template>
+
+
+    <script src="jquery-3.2.1.js"></script>
+    <script src="handlebars-v4.0.10.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+
+</html>
